@@ -38,29 +38,69 @@ body {
   position: relative;
 }
 
+.card.edited {
+  border: 2px solid #ffc107;
+  background-color: #fff8e1;
+}
+
 .card textarea {
   width: 100%;
   height: 200px;
+  max-height: 200px;
   padding: 0.3rem;
+  padding-right: 2.5rem;
   resize: none;
+  box-sizing: border-box;
+  font-size: 0.9rem;
 }
 
-.card i {
+.card .inner i {
   position: absolute;
-  margin-left: 0.3rem;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  right: 5%;
+  transform: translate(0%, 20%);
 }
 
-.bi-x-lg {
-  opacity: 0.4;
-  top: 2%;
-  left: 90%;
-}
-
-.bi-x-lg:hover {
+.card .inner:hover i {
   opacity: 1;
 }
 
+.card .inner::marker i {
+  opacity: 1;
+}
+
+.bi-x-lg {
+  top: 2%;
+}
+
 .bi-pencil {
-  top: 15%;
-  left: 90%;
+  top: 14%;
+}
+
+.bi-copy {
+  top: 27%;
+}
+
+.fixed-pin {
+  position: relative;
+  width: 100%;
+}
+
+.bi-pin,
+.bi-pin-fill {
+  position: absolute;
+  top: 83%;
+  right: 5%;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.card.pinned .bi-pin-fill {
+  color: orange;
+}
+
+.dragging {
+  opacity: 0.4;
+  border: 2px dashed #666;
 }
