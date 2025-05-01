@@ -1,6 +1,8 @@
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
 }
 
 body {
@@ -9,11 +11,62 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100dvh;
-  padding: 0 1rem;
+  width: 100%;
+  padding-bottom: 80px;
 }
 
-.addcard {
+/* NAVBAR */
+header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0.9rem 0;
+  justify-content: space-around;
+  background-color: #242423;
+}
+
+header h1 {
+  color: #fff;
+}
+
+/* BARRA DE NAVEGAÇÃO */
+#search {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 30%;
+}
+
+#search input {
+  padding: 0.3rem 0.5rem;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  width: 100%;
+}
+
+#search,
+.bi-search {
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+/* EXPORTAR */
+#export {
+  background-color: #fff;
+  padding: 0.4rem;
+  font-size: 0.9rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#export,
+.bi-download {
+  margin-left: 0.2rem;
+}
+
+/* NOTAS */
+#addcard {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,37 +74,65 @@ body {
   gap: 0.3rem;
 }
 
-.addcard input {
-  width: 25%;
-  padding: 0.3rem;
+#addcard input {
+  width: 20%;
+  padding: 0.4rem;
+  border-radius: 5px;
+  border: 1px solid #333;
+}
+
+#addcard i {
+  font-size: 1.4rem;
 }
 
 #cards {
   display: flex;
   flex-wrap: wrap;
-  overflow-x: hidden;
+  overflow: auto;
+  justify-content: flex-start;
   width: 100%;
+  padding: 0 2rem;
   gap: 1rem;
 }
 
 .card {
   position: relative;
+  border: 1px solid #333;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s ease;
 }
 
 .card.edited {
-  border: 2px solid #ffc107;
-  background-color: #fff8e1;
+  border: 2px dashed #646464;
+  transition: border 0.2s ease;
 }
 
 .card textarea {
+  cursor: grab;
   width: 100%;
   height: 200px;
   max-height: 200px;
   padding: 0.3rem;
   padding-right: 2.5rem;
   resize: none;
-  box-sizing: border-box;
-  font-size: 0.9rem;
+  font-size: 1rem;
+  border: none;
+  background-color: transparent;
+}
+
+textarea:focus {
+  outline: none;
+  border: none;
+}
+
+.card i {
+  color: #333;
+  cursor: pointer;
+}
+
+.card i:hover {
+  color: #000;
 }
 
 .card .inner i {
@@ -96,11 +177,69 @@ body {
   color: #333;
 }
 
-.card.pinned .bi-pin-fill {
-  color: orange;
+.card.pinned {
+  border: 2px solid #000;
 }
 
-.dragging {
+.card.pinned .bi-pin-fill {
+  color: #000;
+}
+
+.card.dragging {
   opacity: 0.4;
   border: 2px dashed #666;
+}
+
+#legenda {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #f1f3f5;
+  border-top: 1px solid #ccc;
+  padding: 0.7rem 1rem;
+  font-size: 0.9rem;
+  z-index: 999;
+}
+
+#legenda ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+
+#legenda li {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+}
+
+.legenda-icon {
+  position: static !important;
+  font-size: 1rem;
+  pointer-events: none;
+  color: #343a40;
+}
+
+.indicador {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.indicador.edited {
+  border: 2px dashed #343a40;
+  background: #ffffff;
+}
+
+.indicador.pinned {
+  border: 2px solid #343a40;
+  background: #ffffff;
 }
